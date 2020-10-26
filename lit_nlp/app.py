@@ -107,12 +107,15 @@ class LitApp(object):
     info_by_dataset = collections.OrderedDict()
     for name, ds in self._datasets.items():
       info_by_dataset[name] = {'spec': ds.spec()}
+    generator_info = collections.OrderedDict()
+    for gen_name in self._generators.keys():
+      generator_info[gen_name] = self._generators[gen_name].spec()
 
     self._info = {
         'models': info_by_model,
         'datasets': info_by_dataset,
         # TODO(lit-team): return more spec information here?
-        'generators': list(self._generators.keys()),
+        'generators': generator_info,
         'interpreters': list(self._interpreters.keys()),
         'demoMode': self._demo_mode,
         'defaultLayout': self._default_layout,

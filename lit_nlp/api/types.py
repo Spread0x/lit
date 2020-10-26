@@ -66,6 +66,12 @@ class TextSegment(LitType):
 
 
 @attr.s(auto_attribs=True, frozen=True, kw_only=True)
+class TextValue(LitType):
+  """Text value."""
+  value: Text
+
+
+@attr.s(auto_attribs=True, frozen=True, kw_only=True)
 class GeneratedText(TextSegment):
   """Generated (untokenized) text."""
   parent: Optional[Text] = None  # name of a TextSegment field, to compare to

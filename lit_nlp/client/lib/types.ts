@@ -39,6 +39,7 @@ export interface LitType {
   vocab?: string[];
   null_idx?: number;
   required?: boolean;
+  value? : string;
 }
 
 export interface Spec {
@@ -55,6 +56,9 @@ export interface DatasetsMap {
   [datasetName: string]: DatasetSpec;
 }
 
+export interface GeneratorsMap {
+  [generatorName: string]: Spec;
+}
 
 export interface CallConfig {
   [option: string]: string|number|boolean|CallConfig;
@@ -78,7 +82,7 @@ export interface ModelsMap {
 
 export interface LitMetadata {
   datasets: DatasetsMap;
-  generators: string[];
+  generators: GeneratorsMap;
   interpreters: string[];
   models: ModelsMap;
   demoMode: boolean;
